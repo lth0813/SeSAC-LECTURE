@@ -1,0 +1,122 @@
+<실습1>
+
+html_str = """
+<html>
+    <body>
+        <ul class="greet">
+            <li>hello</li>
+            <li>bye</li>
+            <li>welcome</li>
+        </ul>
+        <ul class="reply">
+            <li>ok</li>
+            <li>no</li>
+            <li>sure</li>
+        </ul>
+    </body>
+</html>
+"""
+</실습1>
+
+<실습2>
+
+html_str = """
+<html>
+    <body>
+        <h1 id='title'>Hello Python</h1>
+        <p id="crawling">웹 크롤링</p>
+        <p id="parsing">파싱</p>
+    </body>
+</html>"""
+
+</실습2>
+
+<실습3>
+
+html_str = """
+<html>
+    <body>
+        <h1>파이썬 프로그래밍</h1>
+        <p>웹 페이지 분석</p><p>크롤링</p><p>파싱</p>        
+    </body>
+</html>
+"""
+
+</실습3>
+
+<실습4>
+
+html_str = """
+<html>
+    <body>
+        <ul class="ko">
+            <li><a href="https://www.naver.com/">네이버</a></li>
+            <li><a href="https://www.daum.net/">다음</a></li>
+        </ul>
+        <ul class="sns">
+            <li><a href="https://www.goole.com/">구글</a></li>
+            <li><a href="https://www.facebook.net/">페이스북</a></li>
+        </ul>
+    </body>
+</html>
+"""
+</실습4>
+
+<실습5>
+html_str = """
+<html>
+   <body>
+    	<div id="wrap">
+        	<div id="mainMenuBox">                	
+                <ul>  
+                    <li><a href="#">패션잡화</a></li>    
+                    <li><a href="#">주방용품</a></li>                     	          
+                    <li><a href="#">생활건강</a></li>
+                    <li><a href="#">DIY가구</a></li>
+                </ul>
+            </div>
+        	<div>
+            	<table>
+                	<tr><td><img src="shoes1.jpg"></td>
+                    	  <td><img src="shoes2.jpg"></td>
+                    	  <td><img src="shoes3.jpg"></td></tr>
+                    <tr id="prdName"><td>솔로이스트<br>걸리쉬 리본단화</td>
+                    	  <td>맥컬린<br>그레이가보시스트랩 펌프스</td>
+                          <td>맥컬린<br>섹슈얼인사이드펌프스</td></tr>
+                    <tr id="price"><td>100,000원</td><td>200,000원</td><td>120,000원</td></tr>
+                </table>
+            </div>
+            <div id="out_box">
+            	<div class="box">
+                	<h4>공지사항</h4>
+                    <hr>
+                    <a href="#">[배송] : 무표배송 변경 안내 18.10.20</a><br>
+                    <a href="#">[전시] : DIY 가구 전시 안내 18.10.31</a><br>
+                    <a href="#">[판매] : 11월 특가 상품 안내 18.11.05</a>                               
+                </div>
+                <div class="box">
+                	<h4>커뮤니티</h4>
+                    <hr>
+                    <a href="#">[레시피] : 살 안찌는 야식 만들기</a><br>
+                    <a href="#">[가구] : 헌집 새집 베스트 가구</a><br>
+                    <a href="#">[후기] : 배송이 잘못 됐어요 ㅠㅠ</a><br>
+                 </div>
+            </div>            
+        </div>
+    </body>
+</html>"""
+
+</실습5>
+
+<실습6>
+'''
+            <div id="mainMenuBox">                	
+                <ul>  
+                    <li><a href="#">패션잡화</a></li>    
+                    <li><a href="#">주방용품</a></li>                     	          
+                    <li><a href="#">생활건강</a></li>
+                    <li><a href="#">DIY가구</a></li>
+                </ul>
+            </div>
+'''
+</실습6>
