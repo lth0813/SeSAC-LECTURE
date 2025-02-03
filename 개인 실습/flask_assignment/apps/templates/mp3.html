@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% if not filename %}
+    <h1>파일 업로드</h1>
+    <br />
+    <form action="/mp3" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" />
+      <br /><br />
+      <input type="submit" value="파일 업로드 하기" />
+    </form>
+    {% else %}
+    <h1>파일 다운로드</h1>
+    <h4>{{ filename }} 파일 업로드 완료!</h4>
+    <a href="/download/{{filename}}"><button>다운로드</button></a>
+    <br />
+    <br />
+    <a href="/mp3"><button>새 파일 업로드</button></a>
+    {% endif %}
+  </body>
+</html>
