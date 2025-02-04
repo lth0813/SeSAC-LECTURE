@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='fileserver.css')}}" />
+    <title>Server</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="{{ url_for('static', filename='images/fileserver_main.png')}}"
+          alt="main"
+          class="header_image"
+        />
+        <div class="header_text">FileServer</div>
+      </div>
+      <hr />
+      <div class="root">
+        <div class="root_root">폴더 : {{ upload_root }}</div>
+        <div class="root_btns">
+            <img
+            src="{{ url_for('static', filename='images/fileserver_upload.png')}}"
+            alt="upload"
+            class="root_upload"
+            />
+            <img
+            src="{{ url_for('static', filename='images/fileserver_download.png')}}"
+            alt="download"
+            class="root_download"
+            />
+        </div>
+      </div>
+      </div>
+      <hr />
+      <div class="buttons">
+        <form class="buttons_form" action="/fileserver" method="POST" enctype="multipart/form-data">
+          <input type="file" name="file"/>
+          <button type="submit">제출</button>
+        </form>
+      </div>
+      <div class="main">
+        <hr />
+        <div class="main_row1">
+            <div class="main_type"></div>
+            <div class="main_name">이름</div>
+            <div class="main_delete"></div>
+            <div class="main_date">만든 날짜</div>
+            <div class="main_update">마지막으로 수정한 날짜</div>
+            <div class="main_size">파일 크기</div>
+        </div>
+        <hr>
+        {% for file in files %}
+        <div class="main_row">
+            <div class="main_type">
+                {% if file.color == 'green' %}
+                <div class="type_circle green">{{ file.type }}</div>
+                {% elif file.color == 'gray' %}
+                <div class="type_circle gray">{{ file.type }}</div>
+                {% elif file.color == 'blue' %}
+                <div class="type_circle blue">{{ file.type }}</div>
+                {% elif file.color == 'yellow' %}
+                <div class="type_circle yellow">{{ file.type }}</div>
+                {% else %}
+                <div class="type_circle red">{{ file.type }}</div>
+                {% endif %}
+            </div>
+            <div class="main_name">
+                <a class="down_btn" href="{{ url_for('file_server_download', filename = file.name) }}">{{ file.name }}</a>
+            </div>
+            <div class="main_delete">
+                <a class="del_btn" href="{{ url_for('file_server_del', filename = file.name) }}">[삭제]</a>
+            </div>
+            <div class="main_date">{{ file.created }}</div>
+            <div class="main_update">{{ file.updated }}</div>
+            {% if file.size >= 1024 * 1024 %}
+            <div class="main_size">{{ (file.size / (1024 * 1024)) | round(2) }} MB</div>
+            {% else %}
+            <div class="main_size">{{ (file.size / 1024) | round(2) }} KB</div>
+            {% endif %}
+        </div>
+        <hr>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

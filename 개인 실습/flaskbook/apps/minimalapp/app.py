@@ -12,7 +12,7 @@ from flask_mail import Mail, Message
 app = Flask(__name__)
 
 app.config["DEBUG"] = True
-app.config["SECRET_KEY"] = "1234qwer"
+app.config["SECRET_KEY"] = os.urandom(24)
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
 app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER")
 app.config["MAIL_PORT"] = os.environ.get("MAIL_PORT")

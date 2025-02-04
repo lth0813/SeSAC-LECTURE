@@ -1,0 +1,9 @@
+full - 선택
+
+check-requirements
+execute - 선택
+
+Visual C++ 없으면 설치해야함
+
+installation
+connector 관련 없음

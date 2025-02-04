@@ -1,0 +1,125 @@
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header_image {
+  height: 40px;
+}
+
+.header_text {
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 10px;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.root_root {
+  font-size: 12px;
+  font-weight: bold;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.main {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.main_row1,
+.main_row {
+  display: flex;
+  flex-direction: row;
+}
+.main_row1 > div {
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+}
+
+.main_row {
+  font-size: 12px;
+  text-align: center;
+  align-items: center;
+}
+
+.main_type {
+  width: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.type_circle {
+  width: fit-content;
+  padding: 3px;
+  border: 1px solid white;
+  border-radius: 50px;
+
+  font-weight: bold;
+}
+
+.green,
+.blue,
+.red {
+  color: white;
+}
+
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
+}
+.yellow {
+  color: black;
+  background-color: yellow;
+}
+.red {
+  background-color: red;
+}
+.gray {
+  color: black;
+  background-color: lightgray;
+}
+
+.main_name {
+  width: 40%;
+}
+
+.down_btn {
+  text-decoration: none;
+  color: black;
+}
+
+.main_delete {
+  width: 5%;
+}
+
+.del_btn {
+  text-decoration: none;
+}
+
+.main_date {
+  width: 15%;
+}
+
+.main_update {
+  width: 17%;
+}
+
+.main_size {
+  width: 18%;
+}
