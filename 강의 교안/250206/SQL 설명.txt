@@ -1,0 +1,93 @@
+SQL
+SQL (Structured Query Language)은 구조적인 질의 언어라는 뜻이다.
+
+SQL 이라는 질의 언어를 통해서 데이터베이스를 제어, 관리한다.
+
+SQL statements에는 DDL, DML, DQL이 있다.
+
+DDL
+DDL (Data Define Language)은 Schema 내의 객체를 정의하고 관리할 때 사용되는 쿼리문을 의미합니다.
+CREATE, ALTER, DROP이 대표적인 DDL입니다.
+이 외에도 DELETE, TRUNCATE, RENAME이 있습니다.
+
+CREATE : 스키마 및 테이블 생성
+ALTER : COLUMN(열) 변경, 추가, 삭제, 수정
+DROP : Table 삭제
+DELETE : Table 내의 데이터 삭제
+TRUNCATE : 모든 ROW(행)의 데이터와 존재하던 공간까지 모두 제거합니다.
+RENAME : 테이블의 이름을 변경
+
+CREATE
+Schema 생성 명령어
+CREATE DATABASE database_name;
+
+Table 생성 명령어
+
+CREATE TABLE [tablename] (
+	[column_name1] INT PRIMARY KEY AUTO_INCREMENT,
+	[column_name2] VARCHAR(255) NOT NULL,    
+	[column_name3] DATETIME NOT NULL,
+);
+생성된 테이블 정보 확인
+DESC table_name
+
+ALTER
+열(column) 변경
+ALTER TABLE table_name 변경 명령어;
+열(column) 추가
+ALTER TABLE table_name ADD column_name INT NOT NULL;
+자료형(INT, VARCHAR, TEXT 등), 제약 조건(NOT NULL, NULL 등)
+열(column) 삭제
+ALTER TABLE table_name DROP column_name;
+열(column) 수정
+ALTER TABLE table_name MODIFY column_name TEXT NULL
+
+DROP, DELETE, TRUNCATE
+TABLE 삭제
+테이블 객체는 아래 명령어로 Schema에서 지울 수 있습니다.
+DROP TABLE table_name;
+DROP TABLE 명령어를 사용하는 경우 테이블 객체안에 포함된 모든 데이터도 함께 삭제되므로 사용에 주의해야 합니다.
+TABLE 내의 데이터 삭제
+DELETE FROM table_name WHERE condition;
+DELETE 명령어는 행(row) 단위로 내부적으로 처리하기 때문에 삭제할 행이 많으면 처리 속도가 상당히 늦어집니다. 이런 경우에는 TRUNCATE TABLE 명령을 사용해서 모든 행을 삭제해 주는 것이 속도 측면에서 장점이 있습니다.
+TABLE 내의 전체 데이터 삭제
+TRUNCATE TABLE table_name;
+Table 내의 모든 행(row)의 데이터와 공간까지 삭제됩니다.
+
+DML
+DML (Data Manipulation Language)은 데이터를 조작하는 쿼리문들을 뜻합니다.
+INSERT, UPDATE, DELETE 문이 대표적인 쿼리문들입니다.
+
+INSERT : 데이터를 테이블에 넣는 것을 의미
+UPDATE : 이미 테이블에 존재하는 데이터를 수정
+DELETE : 데이터를 테이블에서 삭제하는 작업을 수행
+
+INSERT
+INSERT문은 기존 테이블에 새 데이터를 추가합니다.
+
+INSERT INTO table_name (col_name, col_name2) 
+VALUES (value, value2);
+UPDATE
+UPDATE문은 주로 하나의 테이블에 대해 한 건 또는 여러 건의 레코드를 수정하기 위해서 사용됩니다.
+
+UPDATE table_name SET column_name='수정하고자 하는 내용'
+WHERE column_name='value' AND column_name='value';
+DELETE
+DELETE문은 하나의 테이블에 대해 한 건 또는 여러 건의 행(row)자체를 삭제합니다.
+그렇기 때문에 UPDATE와 INSERT와 같이 column을 별도로 명시해 그 열만 삭제할 수는 없습니다. DELETE 역시 WHERE 구를 지정할 수도 있고, 생략할 수도 있습니다.
+DELETE FROM table_name WHERE column_name = value;
+
+DQL
+DQL (Data Query Language)
+쿼리(Query)의 사전적 의미는 묻다, 질문하다 라는 뜻입니다. 이는 데이터베이스에서 '데이터베이스 서버에게 데이트를 달라고 요청하는 것'으로 해석할 수 있습니다.
+SELECT가 대표적인 쿼리문 입니다.
+모든 데이터 조회
+SELECT * FROM table_name;
+열 지정하기
+SELECT column_name FROM table_name;
+WHERE 절
+SELECT column_name1, column_name2... FROM table_name WHERE column_name = value;
+복수의 조건 표현식은 WHERE문 뒤에 NOT, AND, OR 추가
+WHERE 절 + LIKE 패턴 매칭
+SELECT column_name1, column_name2... FROM table_name WHERE column_name LIKE 'value%'
+LIKE 'value%' 의 경우 첫 번째, 문자열 맨 앞의 단어와 일치하는 경우 검색하는 방법을 의미하고 %가 앞에 있는 경우는 뒤에 문자열 단어와 일치하는 경우, 양쪽에 %가 위치하는 경우에는 중간에 문자열의 포함 여부를 의미합니다.

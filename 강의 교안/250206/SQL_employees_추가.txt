@@ -1,0 +1,12 @@
+1.cmd 명령으로 명령 프롬프트(관리자 권한으로 실행)
+2.C:\Users\student>cd \
+3.C:\>cd Myexam
+4.C:\Myexam>cd employees
+5.C:\Myexam\employees>dir 
+6.C:\Myexam\employees>mysql -u root -p
+
+
+mysql>source employees.sql ;
+
+
+mysql>show databases;
