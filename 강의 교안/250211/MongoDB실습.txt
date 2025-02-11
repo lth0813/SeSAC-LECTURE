@@ -1,0 +1,242 @@
+
+
+======= MongoDB 실행 ===========
+
+1. 도스 커멘드 창에서
+
+C:\>mkdir mongodb
+
+C:\>cd mongodb
+
+C:\mongodb>mkdir test
+
+C:\> cd C:\Program Files\MongoDB\Server\7.0\bin
+
+C:\Program Files\MongoDB\Server\7.0\bin>    mongod   --version     <- MongoDB 버전 확인
+
+
+C:\Program Files\MongoDB\Server\7.0\bin>  mongod --dbpath c:\mongodb\test    <-MongoDB 인스턴스 활성화
+
+   
+2. 새로운 도스 커맨드 창에서
+
+
+C: \MONGODB> mongo localhost:27017
+
+
+>
+
+>help                                <-  Mongo Shell 상태에서 실행할 수 있는 명령어 Help 기능
+
+        db.help()         help on db methods
+        db.mycoll.help()  help on collection methods
+        rs.help()         help on replica set methods
+        help admin        administrative help
+        help connect      connecting to a db help
+        help keys         key shortcuts
+        help misc         misc things to know
+        help mr           mapreduce
+
+    show dbs          show database names
+        show collections  show collections in current database
+        show users        show users in current database
+        show profile      show most recent system.profile entries with time >= 1ms
+        show logs         show the accessible logger names
+db.foo.find()              list objects in collection foo
+        db.foo.find( { a : 1 } )   list objects in foo where a == 1
+        it                         result of the last line evaluated; 
+        DBQuery.shellBatchSize = x set default number of items to display on shell
+        exit                       quit the mongo shell
+
+
+
+>show dbs
+
+
+>use test
+
+
+>db.stats()
+ {
+        "db" : "show",          <-DB명
+        "collections" : 0,      <-컬렉션 수
+        "views" : 0,            <-뷰어의 수
+        "objects" : 0,          <-오브젝트 수
+        "avgObjSize" : 0,       <-오브젝트의 평균 크기
+        "dataSize" : 0,         <-데이터 크기
+        "storageSize" : 0,      <-저장공간의 크기
+        "numExtents" : 0,       <- 총 익스턴트 수
+        "indexes" : 0,          <- 인덱스 수
+        "indexSize" : 0,        <- 인덱스 크기
+        "fsUsedSize" : 0,       <- 사용된 파일 크기
+        "fsTotalSize" : 0,      <- 총 파일 크기
+        "ok" : 1                <- 문장의 실행 상태(정상:1,  실패:0) 
+}
+
+
+>db.hostInfo()
+
+  {
+        "system" : {
+                "currentTime" : ISODate("2018-10-10T06:02:41.368Z"),
+                "hostname" : "jhlee",                   <- 호스트명
+                "cpuAddrSize" : 64,
+                "memSizeMB" : 8097,                     <-메모리 크기
+                "numCores" : 4,                         <- CPU 코어수
+                "cpuArch" : "x86_64",
+                "numaEnabled" : false
+        },
+        "os" : {
+                "type" : "Windows",                  <-OS 유형
+                "name" : "Microsoft Windows 8.1",    <-OS 명
+                "version" : "6.3 (build 9600)"
+        },
+        "extra" : {
+                "pageSize" : NumberLong(4096)
+        },
+        "ok" : 1
+}
+
+
+
+
+
+======= MongoDB 종료와 로그아웃 ===========
+
+> use admin
+
+>
+> db.shutdownServer()                     <- MongoDB 인스턴스를 종료
+
+> exit
+
+
+C:\Program Files\MongoDB\Server\4.0\bin>  mongod --dbpath c:\mongodb\test    ? <- MongoDB 인스턴스 활성화 
+
+
+
+>
+> db.logout()
+
+{ "ok" : 1 }                          ? <- 접속 만 해제돤 상태 (정상처리:1, 실패:0)
+
+
+
+
+
+
+
+==========================================================
+============ Collection 생성과 관리 ==================
+
+c:\> mongo
+
+> use SALES                               <- SALES DB 생성 및 이동(첫 번째 컬렉션 생성 시 DB 자동 생성)
+
+
+> db.createCollection ("employees" , {capped: true, size: 100000 })
+                                                                       <- capped : 저장공간의 재상이 가능합 타입
+                                                                       <- size : collection의 최초 익스텐트 크기
+
+
+> show collections
+
+
+>
+> db.employees.stats()                         <- Collection의 현재 상태 및 정보 분석
+
+
+> db.employees.renameCollection( "emp" )        <- 해당 Collection 이름 변경
+
+
+
+> db.emp.drop()                  <- 해당 Collection 삭제
+
+
+
+=============================================================
+============  데이터 입력하는 방법 =========================
+
+
+> use test
+
+>
+> m={ename : "smith"}    <- MongoDB에서는 JSON 타입으로 데이터를 표현
+
+
+> n={ empno : 1101 }
+
+
+> db .things.save(m)  <- 데이터를 저장할때 SAVE 함수를 사용
+
+
+> db .things.save(n)
+
+
+
+> db .things.find()   <- Collection에 저장된 데이터를 검색할 때 FIND 매쏘드 실행
+
+
+> db.things.insert({ empno : 1102, ename : "king"})   <- 데이터를 입력할때 INSERT 함수를 사용
+
+
+> db.things.find()
+
+
+
+> for (var n = 1103; n <= 1120; n++) db.things.save({n : n , m : "test"})
+
+
+> db.things.find()    <- FOR 반복문을 통해 증가된 값을 n 필드에 적용하여 데이터를 저장
+
+
+> it      <- 출력된 결과가 20개를 초과하면 it 명령어로 다음 화면으로 이동
+
+
+
+
+
+
+=============================================================
+============  데이터 수정하기 ===============================
+
+
+> db.things.update({n:1103}, { $set: {ename : "standford", dept : "research"}})
+> db.things.update({n:1104}, { $set: {ename : "John", dept : "inventory"}})
+> db.things.update({n:1105}, { $set: {ename : "Jeo", dept : "accounting"}})
+> db.things.update({n:1106}, { $set: {ename : "king", dept : "research"}})
+> db.things.update({n:1107}, { $set: {ename : "adams", dept : "personel"}})
+> db.things.update({n:1108}, { $set: {ename : "blake", dept : "inventory"}})
+> db.things.update({n:1109}, { $set: {ename : "smith", dept : "accounting"}})
+> db.things.update({n:1110}, { $set: {ename : "allen", dept : "research"}})
+> db.things.update({n:1119}, { $set: {ename : "clief", dept : "human resource"}})
+> db.things.update({n:1120}, { $set: {ename : "miller", dept : "personel"}})
+
+>
+> db.thing.save({empno : 1101, ename : "Blake", dept : "account"})
+                                    
+                             <- 이미 입력된 데이터를 변경할 때는 SAVE 함수보다는 UPDATE 함수를 사용하는 것이 유리
+
+
+
+
+
+=============================================================
+============  데이터 제거하기 ===============================
+
+
+
+> db.things.remove({m : "test"})
+
+> db.things.find()
+
+
+
+> db.things.remove({})
+
+
+> db.things.find()
+
+
+> db.things.drop()
+
