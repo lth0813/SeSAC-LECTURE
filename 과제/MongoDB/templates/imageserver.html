@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/imageserver.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <img
+      src="{{ url_for('static', filename='images/logo.jpg')}}"
+      class="init_image"
+    /> -->
+    <div class="container">
+      <div class="header">
+        <img src="../static/images/logo2.jpg" alt="logo" class="header_image" />
+        <div class="add_btns">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="cursor: pointer"
+            class="add_btn"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <!-- 세로선 -->
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <!-- 가로선 -->
+          </svg>
+        </div>
+      </div>
+      <div class="start_line"></div>
+      <div class="images">
+        <div class="thumbnails">
+          <div class="thumbnail"></div>
+          <div class="thumbnailgap"></div>
+          <div class="thumbnail"></div>
+          <div class="thumbnailgap"></div>
+          <div class="thumbnail"></div>
+        </div>
+        <div class="thumbnails">
+          <div class="thumbnail"></div>
+          <div class="thumbnailgap"></div>
+          <div class="thumbnail"></div>
+          <div class="thumbnailgap"></div>
+          <div class="thumbnail"></div>
+        </div>
+        <div class="thumbnails">
+          <div class="thumbnail"></div>
+          <div class="thumbnailgap"></div>
+        </div>
+      </div>
+      <div class="divide_line"></div>
+      <div class="des_modal">
+        <div class="btns">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="black"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="cursor: pointer"
+            class="close_btn"
+          >
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+          </svg>
+        </div>
+        <div class="modal_main">
+          <div class="main_image">
+            <img />
+          </div>
+          <div class="main">
+            <div class="main_filename">파일 이름</div>
+            <div></div>
+            <div class="main_filecdate">만든 날짜</div>
+            <div></div>
+            <div class="main_fileudate">수정 날짜</div>
+            <div></div>
+            <div class="main_filesize">파일 크기</div>
+            <div></div>
+            <div class="main_file_id">파일 ID</div>
+            <div></div>
+          </div>
+        </div>
+        <div class="btns">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="cursor: pointer"
+            class="update_btn"
+          >
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="cursor: pointer"
+            class="delete_btn"
+          >
+            <path d="M3 6h18" />
+            <!-- 뚜껑 -->
+            <path d="M8 6V4h8v2" />
+            <!-- 손잡이 -->
+            <path d="M10 11v6" />
+            <!-- 왼쪽 줄 -->
+            <path d="M14 11v6" />
+            <!-- 오른쪽 줄 -->
+            <path d="M5 6l1 14h12l1-14" />
+            <!-- 본체 -->
+          </svg>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
