@@ -34,17 +34,21 @@ body {
 }
 .add_btn {
   width: 5%;
+  background-color: #f2f1df;
+  color: black;
+  border-radius: 10%;
+  margin-bottom: 1%;
 }
 
 .start_line {
   width: 100%;
-  border-top: solid 3px lightgrey;
+  border-top: solid 3px #f2f1df;
 }
 
 .divide_line {
   margin-top: 5%;
   width: 100%;
-  border-top: solid 3px lightgrey;
+  border-top: solid 3px #f2f1df;
 }
 
 .images {
@@ -63,6 +67,14 @@ body {
   width: 30%;
   aspect-ratio: 1 /1;
   border: 1px dashed lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
 }
 .thumbnailgap {
   width: 5%;
@@ -70,8 +82,8 @@ body {
 
 .des_modal {
   width: 100%;
-  border: solid 1px black;
-  display: flex;
+  border: solid 1px #f2f1df;
+  display: none;
   flex-direction: column;
 }
 
@@ -96,8 +108,19 @@ body {
 .main div {
   width: 100%;
   height: 10%;
-  border: solid 1px black;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_filename,
+.main_filecdate,
+.main_fileudate,
+.main_filesize,
+.main_file_id {
+  background-color: #f2f1df;
+  color: black;
+  font-weight: bold;
 }
 
 .btns {
@@ -111,4 +134,57 @@ body {
   margin: 1%;
   width: 5%;
   aspect-ratio: 1 / 1;
+  background-color: #f2f1df;
+  color: black;
+  border-radius: 10%;
+}
+
+.insert_form,
+.update_form {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.insert_form_title,
+.update_form_title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-weight: bold;
+  background-color: #f2f1df;
+  color: black;
+}
+
+.insert_form_main,
+.update_form_main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.insert_form_btn,
+.update_form_btn {
+  border: none;
+  background-color: #f2f1df;
+  color: black;
+  border-radius: 10%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.insert_form_file::file-selector-button,
+.update_form_file::file-selector-button {
+  border: none;
+  background-color: #f2f1df;
+  color: black;
+  border-radius: 10%;
+  font-weight: bold;
+  cursor: pointer;
 }
