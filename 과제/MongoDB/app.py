@@ -12,7 +12,7 @@ class HandleImage():
         self.client = MongoClient("mongodb://localhost:27017/")
         self.db = self.client[db_name]
         self.fs = gridfs.GridFS(self.db, collection=collection_name)
-        subprocess.Popen(r' start cmd /k "mongod --dbpath C:/mongodb/cats"', shell=True)
+        subprocess.Popen(r' start cmd /k "mongod --dbpath C:/mongodb/dogs"', shell=True)
 
     def save_image(self, file):
         order = self.db.fs.files.count_documents({}) + 1
@@ -60,6 +60,9 @@ def imagesever():
 @app.route("/imageserver/insert", methods=["POST"])
 def insert_image():
     file = request.files["insert_file"]
+    if file is None:
+        flash("파일을 선택해주세요.")
+        return redirect("/imageserver")
     handler.save_image(file)
     return redirect("/imageserver")
 

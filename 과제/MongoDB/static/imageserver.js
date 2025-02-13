@@ -9,6 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
       insertForm.style.display = "flex";
     }
   });
+
+  const insertInput = document.querySelector(".insert_form_file");
+  const insertSubmit = document.querySelector(".insert_form_btn");
+
+  insertInput.addEventListener("change", () => {
+    if (insertInput.files.length === 0) {
+      insertSubmit.setAttribute("disabled", true);
+    } else {
+      insertSubmit.removeAttribute("disabled");
+    }
+  });
+
   // 이미지 업데이트 창 출력
   const updateBtn = document.querySelector(".update_btn");
   const updateForm = document.querySelector(".update_form");
@@ -42,6 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "flex";
       container.classList.add("blur-background");
 
+      const updateInput = document.querySelector(".update_form_file");
+      const updateSubmit = document.querySelector(".update_form_btn");
+
+      updateInput.addEventListener("change", () => {
+        if (updateInput.files.length === 0) {
+          updateSubmit.setAttribute("disabled", true);
+        } else {
+          updateSubmit.removeAttribute("disabled");
+        }
+      });
       // 이미지 삭제 JS
       deleteBtn.replaceWith(deleteBtn.cloneNode(true));
       document.querySelector(".delete_btn").addEventListener("click", () => {
