@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/init.css" />
+    <script src="../static/init.js"></script>
+    <title>ImageServer</title>
+  </head>
+  <body>
+    <div class="init_div">
+      <img
+        src="{{ url_for('static', filename='images/logo.jpg')}}"
+        class="init_image"
+      />
+    </div>
+  </body>
+</html>

@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/imageserver.css" />
     <script src="../static/imageserver.js"></script>
-    <title>Document</title>
+    <title>ImageServer</title>
   </head>
   <body>
-    <!-- <img
-      src="{{ url_for('static', filename='images/logo.jpg')}}"
-      class="init_image"
-    /> -->
     <div class="container">
       <div class="header">
         <img src="../static/images/logo2.jpg" alt="logo" class="header_image" />
@@ -34,12 +30,17 @@
         <div class="insert_form">
           <div class="insert_form_title">이미지 추가하기</div>
           <form
-            action="/"
+            action="/imageserver/insert"
             method="POST"
             enctype="multipart/form-data"
             class="insert_form_main"
           >
-            <input type="file" name="insert_file" class="insert_form_file" />
+            <input
+              type="file"
+              name="insert_file"
+              class="insert_form_file"
+              accept="image/*"
+            />
             <button type="submit" class="insert_form_btn">추가</button>
           </form>
         </div>
@@ -63,86 +64,94 @@
         {% endfor %}
       </div>
       <div class="divide_line"></div>
-      <div class="des_modal">
-        <div class="btns">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="black"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            style="cursor: pointer"
-            class="close_btn"
-          >
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-          </svg>
+    </div>
+    <div class="des_modal">
+      <div class="btns">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="black"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="cursor: pointer"
+          class="close_btn"
+        >
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+        </svg>
+      </div>
+      <div class="modal_main">
+        <div class="main_image">
+          <img class="mimage" />
         </div>
-        <div class="modal_main">
-          <div class="main_image">
-            <img />
-          </div>
-          <div class="main">
-            <div class="main_filename">파일 이름</div>
-            <div></div>
-            <div class="main_filecdate">만든 날짜</div>
-            <div></div>
-            <div class="main_fileudate">수정 날짜</div>
-            <div></div>
-            <div class="main_filesize">파일 크기</div>
-            <div></div>
-            <div class="main_file_id">파일 ID</div>
-            <div></div>
-          </div>
+        <div class="main">
+          <div class="main_filename">파일 이름</div>
+          <div class="mfilename"></div>
+          <div class="main_filecdate">만든 날짜</div>
+          <div class="mfliecdate"></div>
+          <div class="main_filesize">파일 크기</div>
+          <div class="mfilesize"></div>
+          <div class="main_file_id">파일 ID</div>
+          <div class="mfileid"></div>
         </div>
-        <div class="btns">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            style="cursor: pointer"
-            class="update_btn"
-          >
-            <path d="M12 20h9" />
-            <path d="M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            style="cursor: pointer"
-            class="delete_btn"
-          >
-            <path d="M3 6h18" />
-            <path d="M8 6V4h8v2" />
-            <path d="M10 11v6" />
-            <path d="M14 11v6" />
-            <path d="M5 6l1 14h12l1-14" />
-          </svg>
-        </div>
-        <div class="update_form">
-          <div class="update_form_title">이미지 수정하기</div>
-          <form
-            action="/"
-            method="POST"
-            enctype="multipart/form-data"
-            class="update_form_main"
-          >
-            <input type="file" name="update_file" class="update_form_file" />
-            <button type="submit" class="update_form_btn">수정</button>
-          </form>
-        </div>
+      </div>
+      <div class="btns">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="cursor: pointer"
+          class="update_btn"
+        >
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="cursor: pointer"
+          class="delete_btn"
+        >
+          <path d="M3 6h18" />
+          <path d="M8 6V4h8v2" />
+          <path d="M10 11v6" />
+          <path d="M14 11v6" />
+          <path d="M5 6l1 14h12l1-14" />
+        </svg>
+      </div>
+      <div class="update_form">
+        <div class="update_form_title">이미지 수정하기</div>
+        <form
+          action="/imageserver/update"
+          method="POST"
+          enctype="multipart/form-data"
+          class="update_form_main"
+        >
+          <input
+            type="file"
+            name="update_file"
+            class="update_form_file"
+            accept="image/*"
+          />
+          <input type="hidden" name="origin_id" class="origin_id" />
+          <button type="submit" class="update_form_btn">수정</button>
+        </form>
       </div>
     </div>
   </body>
 </html>
+
+<script>
+  const images = {{ images | tojson }};
+</script>

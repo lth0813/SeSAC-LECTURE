@@ -40,6 +40,10 @@ body {
   margin-bottom: 1%;
 }
 
+.add_btn:hover {
+  background-color: lightblue;
+}
+
 .start_line {
   width: 100%;
   border-top: solid 3px #f2f1df;
@@ -70,6 +74,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .thumbnail img {
@@ -81,10 +86,17 @@ body {
 }
 
 .des_modal {
-  width: 100%;
+  width: 80%;
   border: solid 1px #f2f1df;
   display: none;
   flex-direction: column;
+  background-color: white;
+  filter: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
 
 .modal_main {
@@ -95,6 +107,13 @@ body {
   aspect-ratio: 1 / 1;
   border: dashed 1px lightgray;
   margin: 1%;
+}
+.mimage {
+  width: 100%;
+  aspect-ratio: 1 /1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .main {
   width: 50%;
@@ -107,7 +126,7 @@ body {
 
 .main div {
   width: 100%;
-  height: 10%;
+  height: 12.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,6 +156,10 @@ body {
   background-color: #f2f1df;
   color: black;
   border-radius: 10%;
+}
+
+.btns svg:hover {
+  background-color: lightblue;
 }
 
 .insert_form,
@@ -179,6 +202,11 @@ body {
   cursor: pointer;
 }
 
+.insert_form_btn:hover,
+.update_form_btn:hover {
+  background-color: lightblue;
+}
+
 .insert_form_file::file-selector-button,
 .update_form_file::file-selector-button {
   border: none;
@@ -187,4 +215,14 @@ body {
   border-radius: 10%;
   font-weight: bold;
   cursor: pointer;
+}
+
+.insert_form_file::file-selector-button:hover,
+.update_form_file::file-selector-button:hover {
+  background-color: lightblue;
+}
+
+.blur-background {
+  filter: blur(5px);
+  pointer-events: none;
 }
