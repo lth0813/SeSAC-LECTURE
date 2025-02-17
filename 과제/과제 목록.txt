@@ -1,3 +1,21 @@
+1. Python 과제 (Pandas, Matplotlib, Seaborn, Folium, Selenium )
+ - 0. Coffee Kiosk 설계
+ - 1. notExercise.xls 시각화
+ - 2. seoulCCTV.csv, seoulPopulation.xlsx 시각화
+ - 3. 서울특별시_일반음식점.csv 데이터 전처리
+ - 4. 음원사이트(벅스, 멜론, 지니) 웹크롤링
+ - 5. 유튜브 랭킹 웹크롤링
+
+2. Flask
+ - 6. 변수에 따른 출력물이 다른 웹페이지 만들기
+ - 7. Jinja2 문법으로 구구단 출력하기
+ - 8. 파일 업로드 / 다운로드 가능한 서버 만들기
+
+3. DMBS / SQL / MongoDB
+ - 9. 비플페이 데이터베이스 설계
+ - 10. 본인이 하고 싶은 데이터베이스 설계
+ - 11. MongoDB와 연동하여 이미지 저장 / 수정 / 삭제가 가능한 파이썬 프로그램 작성
+
 1. 비플페이
 
 2. 부동산 데이터
