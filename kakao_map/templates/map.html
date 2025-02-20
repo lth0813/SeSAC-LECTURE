@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Kakao 지도 시작하기</title>
+  </head>
+  <body>
+    <div id="map" style="width: 500px; height: 400px"></div>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=512fb870be70bddc0b144726872a5419"
+    ></script>
+    <script>
+      var container = document.getElementById("map");
+      var options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 9,
+      };
+
+      var map = new kakao.maps.Map(container, options);
+
+      fetch("http://127.0.0.1:5000/geo")
+        .then((response) => response.json()) // JSON 형식으로 변환
+        .then((data) => {
+          data.features.forEach(drawPolygon); // 각 구별 폴리곤 그리기
+        })
+        .catch((error) => console.error("JSON 로드 오류:", error));
+
+      function drawPolygon(feature) {
+        var coordinates = feature.geometry.coordinates[0]; // 폴리곤 좌표 리스트
+        var path = coordinates.map(
+          (coord) => new kakao.maps.LatLng(coord[1], coord[0])
+        );
+
+        var polygon = new kakao.maps.Polygon({
+          path: path,
+          strokeWeight: 2,
+          strokeColor: "#FF0000",
+          fillColor: "#FFAAAA",
+          fillOpacity: 0.5,
+        });
+
+        polygon.setMap(map);
+      }
+    </script>
+  </body>
+</html>
